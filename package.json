@@ -15,7 +15,10 @@
   },
   "dependencies": {
     "chart.js": "^4.4.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "faker": "^6.6.6",
+    "lucide-react": "^0.376.0",
     "next": "14.2.2",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
@@ -23,6 +26,8 @@
     "react-dom": "^18",
     "react-icons": "^5.1.0",
     "react-papaparse": "^4.4.0",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
