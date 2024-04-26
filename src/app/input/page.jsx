@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Papa from "papaparse";
 import { useRouter } from "next/navigation"; // Import `useRouter` from 'next/router'
-import useUploadStore from "../utils/state"
+import useUploadStore from "@/utils/state"
 
 const Page = () => {
   const [disable, setDisable] = useState(true);
