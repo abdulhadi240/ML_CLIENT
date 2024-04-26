@@ -1,15 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Carian:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee:wght@300&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-*{
-    overflow-x: hidden;
+body {
+  @apply leading-[normal] m-0;
+}
+*,
+::before,
+::after {
+  border-width: 0;
 }
 
-.container {
-    display: flex;
-    align-items: center;
-  }
+
+  .container {
+      display: flex;
+      align-items: center;
+    }
   
   .vertical-line {
     border-left: 1px solid black; /* Adjust the width and color as needed */

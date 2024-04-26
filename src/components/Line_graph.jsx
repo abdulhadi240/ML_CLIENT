@@ -35,21 +35,23 @@ import {
     },
   };
   
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'];
   
-  export const data = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: [100, 10, 50, 400, 1999, 2000, 1800,1000,400,200,0,1000],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      
-    ],
-  };
+
   
-  export default function Line_graph() {
+  export default function Line_graph({revenue}) {
+
+    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'];
+    const data = {
+      labels,
+      datasets: [
+        {
+          label: 'Dataset 1',
+          data: [44.2,48.9,12.5,19.9,9.12,35.9,59.1,revenue],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+        
+      ]
+    }
     return <Line options={options} data={data} />;
   }
