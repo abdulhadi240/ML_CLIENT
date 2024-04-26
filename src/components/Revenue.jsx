@@ -25,15 +25,15 @@ const Revenue = ({ current, past , text }) => {
   }, [current, past]);
 
   return (
-    <div className='border-[1px] overflow-hidden mx-2 w-64 rounded-md pt-7 h-44 flex flex-col gap-6 relative items-center text-center '>
-      <div className="percentage text-xl font-bold">
+    <div className='border-[1px] overflow-hidden mx-2 max-w-[500px] sm:w-64 rounded-md pt-7 h-44 flex flex-col gap-6 relative items-center text-center '>
+      <div className="text-xl font-bold percentage">
         <div className='flex '>
         <div>
             {increase ? <GoTriangleUp color='green' size={25}/> : <GoTriangleDown size={25} color='red'/>}
         </div>
         <p>{percentage}%</p>
       </div>
-      <p className='text-xs text-center font-light '>{text}</p>
+      <p className='text-xs font-light text-center '>{text}</p>
       </div>
       
       <div className='flex gap-4'>
