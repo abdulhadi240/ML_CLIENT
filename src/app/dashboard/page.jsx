@@ -7,6 +7,7 @@ import Pie_chart from '@/components/Pie_chart'
 import  Line_graph  from '@/components/Line_graph'
 import useUploadStore from "../../utils/state";
 import Link from 'next/link'
+import Image from 'next/image'
 const page = () => {
 
 const parsedData = useUploadStore((state) => state.parsedData);
@@ -15,7 +16,7 @@ console.log(parsedData);
 
   return (
     <><div className="flex justify-between mx-10 mt-3 header">
-          <h1>Evoforge</h1>
+      <Link href={'/'}><Image src={'/logo.png'} height={140} width={140} alt='logo'/></Link>
           <Link href={'/working'}><button className='w-32 h-auto p-3 text-white bg-black rounded-md '>Continue</button></Link>
       </div><div className='flex flex-col gap-3 '>
               <div className='flex flex-col justify-center gap-2 sm:flex-row sm:justify-normal'>
