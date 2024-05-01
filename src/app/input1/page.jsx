@@ -9,10 +9,9 @@ import {
   TableCell,
   TableRow,
 } from "@/components/ui/table";
+import { FaFileCsv } from "react-icons/fa";
 import Image from "next/image";
 import { LuUpload } from "react-icons/lu";
-import { FaFileCsv } from "react-icons/fa";
-
 
 const Page = () => {
   const [text, setText] = useState('Click or drag and drop file here');
@@ -62,13 +61,14 @@ const Page = () => {
           onDragOver={dragOverHandler}
         >
           <div className="flex flex-col items-center justify-center gap-4">
-          {disable ? (
+            {disable ? (
             <LuUpload className="text-center" size={25} />
 
             ) : (
                 <FaFileCsv className="text-center" size={30} />
 
-            )}            <input
+            )}
+            <input
               className="hidden"
               type="file"
               accept=".csv"
@@ -79,7 +79,7 @@ const Page = () => {
               {text}
             </label>
             <h1 className="-mt-3 text-xs">
-            select past months
+            select current months
             </h1>
           </div>
         </div>
@@ -89,6 +89,14 @@ const Page = () => {
         {disable ? (
             <div className="flex gap-4">
           <button
+            className="border-[1px] p-3  rounded-md bg-black text-white"
+             onClick={()=>{
+                router.push('/input')
+            }}
+          >
+            Back
+          </button>
+          <button
           className="border-[1px] p-3 disabled:cursor-not-allowed rounded-md bg-gray-300 text-gray-700"
           disabled
         >
@@ -97,14 +105,25 @@ const Page = () => {
         </div>
         ) : (
           <div>
-            <button
+            <div className="flex justify-center gap-4">
+                <button
               className="border-[1px] p-3 rounded-md bg-black text-white"
               onClick={() => {
-                router.push("/input1");
+                router.push("/dashboard");
               }}
             >
               Continue
             </button>
+            <button
+            className="border-[1px] p-3  rounded-md bg-black text-white"
+             onClick={()=>{
+                router.push('/input')
+            }}
+          >
+            Back
+          </button>
+          </div>
+
             {data && (
               <Table>
                 <TableBody>
