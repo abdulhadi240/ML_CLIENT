@@ -29,6 +29,7 @@
     "react-dropzone": "^14.2.3",
     "react-icons": "^5.1.0",
     "react-papaparse": "^4.4.0",
+    "sharp": "^0.33.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.5.2"
