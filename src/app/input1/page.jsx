@@ -71,25 +71,37 @@ const Page = () => {
             <label htmlFor="fileInput" className="text-center cursor-pointer">
               {text}
             </label>
-            <h1 className="-mt-3 text-xs">select previous months</h1>
+            <h1 className="-mt-3 text-xs">
+            select current months
+            </h1>
           </div>
         </div>
       </div>
 
       <div className="text-center">
         {disable ? (
+            <div className="flex gap-4">
           <button
-            className="border-[1px] p-3 disabled:cursor-not-allowed rounded-md bg-gray-300 text-gray-700"
-            disabled
+            className="border-[1px] p-3  rounded-md bg-black text-white"
+             onClick={()=>{
+                router.push('/input')
+            }}
           >
-            Continue
+            Back
           </button>
+          <button
+          className="border-[1px] p-3 disabled:cursor-not-allowed rounded-md bg-gray-300 text-gray-700"
+          disabled
+        >
+          Continue
+        </button>
+        </div>
         ) : (
           <div>
             <button
               className="border-[1px] p-3 rounded-md bg-black text-white"
               onClick={() => {
-                router.push("/input1");
+                router.push("/dashboard");
               }}
             >
               Continue
