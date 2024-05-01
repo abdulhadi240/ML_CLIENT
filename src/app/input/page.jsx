@@ -87,14 +87,12 @@ const Page = () => {
 
       <div className="text-center">
         {disable ? (
-            <div className="flex gap-4">
           <button
-          className="border-[1px] p-3 disabled:cursor-not-allowed rounded-md bg-gray-300 text-gray-700"
-          disabled
-        >
-          Continue
-        </button>
-        </div>
+            className="border-[1px] p-3 disabled:cursor-not-allowed rounded-md bg-gray-300 text-gray-700"
+            disabled
+          >
+            Continue
+          </button>
         ) : (
           <div>
             <button

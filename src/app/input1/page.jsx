@@ -9,7 +9,6 @@ import {
   TableCell,
   TableRow,
 } from "@/components/ui/table";
-import { FaFileCsv } from "react-icons/fa";
 import Image from "next/image";
 import { LuUpload } from "react-icons/lu";
 
@@ -68,6 +67,7 @@ const Page = () => {
                 <FaFileCsv className="text-center" size={30} />
 
             )}
+            <LuUpload className="text-center" size={25} />
             <input
               className="hidden"
               type="file"
