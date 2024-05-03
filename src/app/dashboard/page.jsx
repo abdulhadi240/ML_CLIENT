@@ -15,11 +15,11 @@ console.log(parsedData);
 
 
   return (
-    <><div className="flex justify-between mx-10 mt-3 header">
-      <Link href={'/'}><Image src={'/logo.png'} height={140} width={140} alt='logo'/></Link>
+    <><div className="flex justify-between mx-10 mt-3 overflow-hidden header">
+      <Link href={'/'}><Image src={'/logo1.png'} height={140} width={140} alt='logo'/></Link>
           <Link href={'/working'}><button className='w-32 h-auto p-3 text-white bg-black rounded-md '>Continue</button></Link>
       </div><div className='flex flex-col gap-3 '>
-              <div className='flex flex-col justify-center gap-2 sm:flex-row sm:justify-normal'>
+              <div className='flex flex-col justify-center gap-2 sm:flex-row sm:justify-between sm:pr-16'>
                   <div className='flex flex-col gap-4 mt-4 sm:justify-normal'>
                       <Revenue current={parsedData?.data[1][2]} past={51.25} text={'Revenue'} />
                       <Revenue current={parsedData?.data[1][3]} past={9.02} text={'Expense'} />
@@ -44,7 +44,7 @@ console.log(parsedData);
               <div className='flex flex-col justify-center sm:flex-row sm:justify-normal'>
                   <div className="pie sm:w-[40%]  flex flex-col  border-[1px] p-4 mx-2">
                       <div className='mb-10 font-bold text-start'>
-                          <h1>Top 5 Expenses by Category</h1>
+                          <h1>Production costs of materials </h1>
                           <p className='text-xs font-light'>Last 6 months</p>
                       </div>
 

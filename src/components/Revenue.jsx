@@ -25,7 +25,7 @@ const Revenue = ({ current, past , text }) => {
   }, [current, past]);
 
   return (
-    <div className='border-[1px] overflow-hidden mx-2 max-w-[500px] sm:w-64 rounded-md pt-7 h-44 flex flex-col gap-6 relative items-center text-center '>
+    <div className='border-[1px] overflow-hidden mx-2 max-w-[600px] sm:w-64 rounded-md pt-7 h-44 flex flex-col gap-6 relative items-center text-center '>
       <div className="text-xl font-bold percentage">
         <div className='flex '>
         <div>

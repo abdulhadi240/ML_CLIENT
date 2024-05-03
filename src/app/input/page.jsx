@@ -1,21 +1,15 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Papa from "papaparse";
 import { useRouter } from "next/navigation";
 import useUploadStore from "@/utils/state";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import Image from "next/image";
 import { LuUpload } from "react-icons/lu";
 import { FaFileCsv } from "react-icons/fa";
 
-
 const Page = () => {
-  const [text, setText] = useState('Click or drag and drop file here');
+  const [text, setText] = useState("Click or drag and drop file here");
   const [disable, setDisable] = useState(true);
   const [data, setData] = useState(null);
   const router = useRouter();
@@ -62,13 +56,12 @@ const Page = () => {
           onDragOver={dragOverHandler}
         >
           <div className="flex flex-col items-center justify-center gap-4">
-          {disable ? (
-            <LuUpload className="text-center" size={25} />
-
+            {disable ? (
+              <LuUpload className="text-center" size={25} />
             ) : (
-                <FaFileCsv className="text-center" size={30} />
-
-            )}            <input
+              <FaFileCsv className="text-center" size={30} />
+            )}{" "}
+            <input
               className="hidden"
               type="file"
               accept=".csv"
@@ -78,9 +71,7 @@ const Page = () => {
             <label htmlFor="fileInput" className="text-center cursor-pointer">
               {text}
             </label>
-            <h1 className="-mt-3 text-xs">
-            select past months
-            </h1>
+            <h1 className="-mt-3 text-xs">select trained data</h1>
           </div>
         </div>
       </div>
@@ -106,7 +97,7 @@ const Page = () => {
             {data && (
               <Table>
                 <TableBody>
-                  {data.map((items, index) => (
+                  {data.slice(0, 8).map((items, index) => (
                     <TableRow key={index}>
                       {items.map((item, i) => (
                         <TableCell key={i}>{item}</TableCell>

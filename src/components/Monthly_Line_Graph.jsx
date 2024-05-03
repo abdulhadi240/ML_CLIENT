@@ -56,5 +56,5 @@ export const data = {
 };
 
 export function Monthly_Line_Graph() {
-  return <Line options={options} data={data} />;
+  return <Line options={options} data={data} redraw />;
 }
