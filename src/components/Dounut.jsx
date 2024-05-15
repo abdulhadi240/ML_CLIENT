@@ -36,7 +36,9 @@ export const data = {
 
 const Dounut = () => {
   return (
-    <Doughnut data={data} />
+<div className="flex justify-center w-full h-72">
+      <Doughnut data={data} />
+    </div>
   )
 }
 

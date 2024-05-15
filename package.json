@@ -14,7 +14,10 @@
     "react-icons": "^5.1.0"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@radix-ui/react-select": "^2.0.0",
+    "@tremor/react": "^3.16.2",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
     "class-variance-authority": "^0.7.0",
@@ -29,6 +32,7 @@
     "react-dropzone": "^14.2.3",
     "react-icons": "^5.1.0",
     "react-papaparse": "^4.4.0",
+    "recharts": "^2.12.6",
     "sharp": "^0.33.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
