@@ -2,7 +2,7 @@ import React from 'react'
 
 const Openai_function = () => {
   return (
-    <div>Openai_function</div>
+    <div>helo</div>
   )
 }
 
