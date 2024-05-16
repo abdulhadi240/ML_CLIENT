@@ -35,18 +35,19 @@ export const options = {
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [5000,4000,3000,6000,8000,9000,10000,5000,1000,9000],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    
-  ],
-};
 
-export function Bar_graph() {
+
+export function Bar_graph({values}) {
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data:values ,
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+      
+    ],
+  };
   return <Bar options={options} data={data} />;
 }

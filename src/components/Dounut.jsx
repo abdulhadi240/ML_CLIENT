@@ -7,7 +7,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export const data = {
-    labels: ['Partial', 'Unpaid', 'Paid'],
+    labels: ['Graphite Inventory', 'Rubber Purchases', 'Timber Inventory'],
     datasets: [
       {
         label: '%',

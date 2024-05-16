@@ -39,19 +39,19 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July','
 
 
 
-export function Monthly_Line_Graph({data1}) {
+export function Monthly_Line_Graph({actual , predicted}) {
   const data = {
     labels,
     datasets: [
       {
         label: 'Actual',
-        data: [5000,4000,3000,6000,8000,9000,10000,5000,1000,9000,5000,4000,2500,5000,9000,8000,9800,3000,2000,7000],
+        data: actual,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Forecast',
-        data: data1,
+        data: predicted,
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },

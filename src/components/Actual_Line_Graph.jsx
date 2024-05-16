@@ -39,19 +39,19 @@ const labels = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15
 
 
 
-export function Actual_Line_Graph({data1}) {
+export function Actual_Line_Graph({actual , predicted}) {
   const data = {
     labels,
     datasets: [
       {
         label: 'Actual',
-        data: [501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513],
+        data: actual,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Forecast',
-        data: data1,
+        data: predicted,
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },

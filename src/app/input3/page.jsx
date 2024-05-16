@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Papa from "papaparse";
 import { useRouter } from "next/navigation";
-import useUploadStore from "@/utils/state";
+import {useUploadStore1} from "@/utils/state";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import Image from "next/image";
 import { LuUpload } from "react-icons/lu";
@@ -13,7 +13,7 @@ const Page = () => {
   const [disable, setDisable] = useState(true);
   const [data, setData] = useState(null);
   const router = useRouter();
-  const setParsedData = useUploadStore((state) => state.setParsedData);
+  const setSales = useUploadStore1((state) => state.setSalesData);
 
   const handleFile = (e) => {
     const csv_file = e.target.files[0];
@@ -35,7 +35,7 @@ const Page = () => {
       complete: (results) => {
         console.log(results);
         setDisable(false);
-        setParsedData(results);
+        setSales(results);
         setData(results.data);
       },
     });
@@ -71,7 +71,7 @@ const Page = () => {
             <label htmlFor="fileInput" className="text-center cursor-pointer">
               {text}
             </label>
-            <h1 className="-mt-3 text-xs">select past months</h1>
+            <h1 className="-mt-3 text-xs">Select Sales Data</h1>
           </div>
         </div>
       </div>
@@ -83,7 +83,7 @@ const Page = () => {
               className="border-[1px] p-3 disabled:cursor-not-allowed rounded-md bg-gray-300 text-gray-700"
               disabled
               onClick={() => {
-                router.push("/input");
+                router.push("/input1");
               }}
             >
               Back
@@ -100,7 +100,7 @@ const Page = () => {
             <button
               className="border-[1px] p-3 rounded-md bg-black text-white"
               onClick={() => {
-                router.push("/input");
+                router.push("/input1");
               }}
             >
               Back
@@ -108,7 +108,7 @@ const Page = () => {
             <button
               className="border-[1px] p-3 rounded-md bg-black text-white"
               onClick={() => {
-                router.push("/input3");
+                router.push("/dashboard");
               }}
             >
               Continue

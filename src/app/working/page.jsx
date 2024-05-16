@@ -7,11 +7,18 @@ import Line_graph_line from "@/components/Line_graph_line";
 import Revenue from "@/components/Revenue";
 import Errors from "@/components/Errors";
 import Dounut from "@/components/Dounut";
+import useUploadStore from "../../utils/state";
+import OpenAI from "openai";
+
+const apiKey = process.env.OPENAI_API_KEY;
+
+const openai = new OpenAI({ apiKey: apiKey ,dangerouslyAllowBrowser: true });
+
 
 const Page = () => {
   const [selectedValue, setSelectedValue] = useState("XG_Boost"); // Initial selected value
   const [showDropdown, setShowDropdown] = useState(false); // State to manage dropdown visibility
-  const [data, setData] = useState(null);
+  const [data_response, setData_Response] = useState(null);
   const [model, setModel] = useState("XG_Boost");
 
   // Function to handle dropdown value change
@@ -31,7 +38,24 @@ const Page = () => {
           }
         );
         const responseData = await response.json();
-        setData(responseData);
+        const completion = await openai.chat.completions.create({
+          messages: [
+            {
+              role: "system",
+              content:
+                "You are a helpful assistant designed to output JSON..  as shown : {'data':[array of 30 values]}."
+            },
+            {
+              role: "user",
+              content: `${JSON.stringify(responseData)}. Use this to generate JSON output.`
+            }
+          ],
+          model: "gpt-3.5-turbo-0125",
+          response_format: { type: "json_object" }
+        });
+        const res = completion.choices[0].message.content
+        setData_Response(res)
+        console.log(res);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -40,30 +64,101 @@ const Page = () => {
     fetchData();
   }, [model]);
 
-  const jsonData = {
+const values = [5000,4000,3000,6000,8000,9000,10000,5000,1000,9000]
+
+  const actual = {
     Data: [
-      531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545,
-      546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560,
+      5396,
+5843,
+6630,
+8525,
+4370,
+9556,
+8347,
+4995,
+1088,
+7468,
+7546,
+9836,
+1037,
+7509,
+7506,
+7352,
+3263,
+7069,
+9588,
+8094,
+8751,
+8659,
+6754,
+7728,
+4568,
+7248,
+4011,
+8675,
+5486,
+5622,
+7398,
+
     ],
   };
 
-  const jsonData1 = {
-    Data: [
-      631, 532, 533, 534, 535, 536, 87, 538, 539, 540, 541, 542, 543, 64, 545,
-      546, 447, 548, 549, 550, 551, 552, 553, 554, 555, 556, 457, 558, 559, 560,
-    ],
+  const predicted_model_1 = {
+    Data: [7301, 8145, 9518, 5496, 10292, 8967, 5210, 1211, 8119, 8643, 10569, 1482, 8253, 8594, 8478, 4929, 7448, 10425, 10642, 9421, 9221, 6124, 8459, 5389, 7891, 9453, 9234, 6049, 6345, 7935]
   };
 
+  const predicted_model_2 = {
+    Data: [8491,9834,7756,9823,7349,8621,9567,7329,5489,7623,8756,9825,7358,7469,8652,5482,7391,
+      9589,9827,8763,8673,5349,
+      7745,4585,7273,8766,8699,5526,5658,7422,8699,7273,7422]
+  };
+
+  const predicted_model_3 = {
+    Data: [5343,
+    6630,
+    8529,
+    4370,
+    9556,
+    8347,
+    4995,
+    1088,
+    7468,
+    7546,
+    9836,
+    1037,
+    7509,
+    7506,
+    7355,
+    3263,
+    7069,
+    9588,
+    9821,
+    8751,
+    8659,
+    5321,
+    7728,
+    4568,
+    7248,
+    8752,
+    8675,
+    5486,
+    5622,
+    7398,
+    7398
+  ]
+  };
+
+  
   // Extracting the array
-  const dataArray = jsonData.Data;
-  const dataArray1 = jsonData1.Data;
-
-  console.log(dataArray);
+  
+ 
+const parsedData = useUploadStore((state) => state.parsedData);
+const salesArray = parsedData.data.slice(1, -1).map(entry => parseFloat(entry[2]));
 
   return (
     <>
       <div className="flex items-center justify-between py-4">
-        <Image src={"/logo.png"} height={60} width={60} alt="logo" />
+        <Image src={"/logo.png"} height={100} width={100} alt="logo" />
         <div className="inline-block right-6 ">
           {/* Dropdown */}
           <div
@@ -107,23 +202,18 @@ const Page = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4 mb-8">
-        <div className="p-4 bg-white rounded-lg shadow-md">
-          <h2 className="mb-2 text-lg font-semibold">Net Sales by Customer</h2>
-          {selectedValue === "XG_Boost" && <Bar_graph />}
-          {selectedValue === "LSTM" && <Bar_graph />}
-          {selectedValue === "Vector_Auto_Regression" && <Bar_graph />}
-        </div>
+        
         <div className="p-4 bg-white rounded-lg shadow-md">
           <h2 className="mb-2 text-lg font-semibold">
             Variance - Actual vs Forecast
           </h2>
           <div className="flex justify-between">
-            {selectedValue === "XG_Boost" && <Errors />}
-            {selectedValue === "LSTM" && <Errors />}
-            {selectedValue === "Vector_Auto_Regression" && <Errors />}
-            {selectedValue === "XG_Boost" && <Errors />}
-            {selectedValue === "LSTM" && <Errors />}
-            {selectedValue === "Vector_Auto_Regression" && <Errors />}
+            {selectedValue === "XG_Boost" && <Errors actual={actual.Data} predicted={predicted_model_1.Data}/>}
+            {selectedValue === "LSTM" && <Errors actual={actual.Data} predicted={predicted_model_2.Data}/>}
+            {selectedValue === "Vector_Auto_Regression" && <Errors actual={actual.Data} predicted={predicted_model_3.Data}/>}
+            {selectedValue === "XG_Boost" && <Errors actual={actual.Data} predicted={predicted_model_1.Data}/>}
+            {selectedValue === "LSTM" && <Errors actual={actual.Data} predicted={predicted_model_2.Data}/>}
+            {selectedValue === "Vector_Auto_Regression" && <Errors actual={actual.Data} predicted={predicted_model_3.Data}/>}
           </div>
         </div>
       </div>
@@ -143,26 +233,29 @@ const Page = () => {
           <h2 className="mb-2 text-lg font-semibold">
             Net Sales Per Customer for Actual vs Forecast
           </h2>
-          {selectedValue === "XG_Boost" && <Bar_graph />}
-          {selectedValue === "LSTM" && <Bar_graph />}
-          {selectedValue === "Vector_Auto_Regression" && <Bar_graph />}
+          {selectedValue === "XG_Boost" && <Bar_graph values={values}/>}
+          {selectedValue === "LSTM" && <Bar_graph values={values}/>}
+          {selectedValue === "Vector_Auto_Regression" && <Bar_graph values={values}/>}
         </div>
       </div>
 
       <div className="p-4 bg-white rounded-lg shadow-md">
         {/* Render Line_graph_line component if selected value is Component 1 */}
         {selectedValue === "XG_Boost" && (
-          <Line_graph_line data1={dataArray} />
+          <Line_graph_line actual={actual.Data} predicted={predicted_model_1.Data} />
         )}
         {selectedValue === "LSTM" && (
-          <Line_graph_line data1={dataArray1} />
+          <Line_graph_line actual={actual.Data} predicted={predicted_model_2.Data} />
         )}
         {selectedValue === "Vector_Auto_Regression" && (
-          <Line_graph_line data1={dataArray} />
+          <Line_graph_line actual={actual.Data} predicted={predicted_model_3.Data} />
         )}{" "}
+
+        
       </div>
     </>
   );
 };
 
 export default Page;
+

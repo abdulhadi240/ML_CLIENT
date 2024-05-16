@@ -46,7 +46,7 @@ import {
       datasets: [
         {
           label: 'Sales',
-          data: [44.2,48.9,12.5,19.9,9.12,35.9,59.1,revenue],
+          data: revenue,
           borderColor: 'rgb(255, 99, 133)',
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },

@@ -38,12 +38,12 @@ const Revenue = ({ current, past , text }) => {
       
       <div className='flex gap-4'>
         <div className="current">
-          <h1>${current}K</h1>
+          <h1>${current}</h1>
           <p className='text-xs'>This Month</p>
         </div> 
         <div className="vertical-line"></div> {/* Vertical line */}
         <div className="past">
-          <h1>${past}K</h1>
+          <h1>${past}</h1>
           <p className='text-xs'>Last Month</p>
         </div>
       </div>
