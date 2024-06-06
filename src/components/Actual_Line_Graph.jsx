@@ -40,6 +40,7 @@ const labels = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15
 
 
 export function Actual_Line_Graph({actual , predicted}) {
+ // const predicted_1 = actual.Data.concat(predicted.Data)
   const data = {
     labels,
     datasets: [

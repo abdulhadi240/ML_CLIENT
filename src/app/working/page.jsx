@@ -10,9 +10,8 @@ import Dounut from "@/components/Dounut";
 import useUploadStore from "../../utils/state";
 import OpenAI from "openai";
 
-const apiKey = process.env.OPENAI_API_KEY;
 
-const openai = new OpenAI({ apiKey: apiKey ,dangerouslyAllowBrowser: true });
+const openai = new OpenAI({ apiKey: 'sk-proj-7YWO4G2s6QN88JwVHI7uT3BlbkFJUVvw7BTtbplZwFw0RtLO' ,dangerouslyAllowBrowser: true });
 
 
 const Page = () => {
@@ -147,11 +146,7 @@ const values = [5000,4000,3000,6000,8000,9000,10000,5000,1000,9000]
     7398
   ]
   };
-
-  
-  // Extracting the array
-  
- 
+   
 const parsedData = useUploadStore((state) => state.parsedData);
 const salesArray = parsedData.data.slice(1, -1).map(entry => parseFloat(entry[2]));
 
